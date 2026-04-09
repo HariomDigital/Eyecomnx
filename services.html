@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Eyecom NX - Premium Electronics Retailer in Mumbai. Custom PC builds, components, peripherals, repair & CCTV services.">
+    <meta name="theme-color" content="#007AFF">
+    <title>Eyecom NX - Premium Electronics Retailer</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @media (max-width: 768px) {
+            :root {
+                --spacing-xs: 0.5rem;
+                --spacing-sm: 1rem;
+                --spacing-md: 1.5rem;
+                --spacing-lg: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+    <img src="logo.svg" alt="Eyecom NX Logo" style="height:40px;">
+</div>
+        </div>
+        <a href="index.html" class="cta-button cta-header">Home</a>
+    </nav>
+    <!-- Services Section — scroll-triggered -->
+    <section class="features-section" id="services">
+        <div class="section-title reveal">
+            <h2>Our Top Services</h2>
+            <p>Comprehensive electronics solutions tailored to your needs</p>
+        </div>
+
+        <div class="feature-grid reveal-stagger">
+            <div class="feature-card service-card">
+                <div class="service-image">
+                    <img src="builds.png" alt="Custom PC Build" loading="lazy">
+                </div>
+                <div class="service-content">
+                    <div class="feature-icon">🖥️</div>
+                    <h3>Custom PC Build</h3>
+                    <p>Get a tailor-made gaming or workstation PC built to your specifications and budget. Expert assembly and optimization included.</p>
+                </div>
+            </div>
+
+            <div class="feature-card service-card">
+                <div class="service-image">
+                    <img src="parts.png" alt="PC Components" loading="lazy">
+                </div>
+                <div class="service-content">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>PC Components</h3>
+                    <p>Wide selection of GPUs, CPUs, motherboards, RAM, and storage. Genuine products from trusted brands with warranty.</p>
+                </div>
+            </div>
+
+            <div class="feature-card service-card">
+                <div class="service-image">
+                    <img src="peri.png" alt="Peripherals" loading="lazy">
+                </div>
+                <div class="service-content">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Peripherals</h3>
+                    <p>Premium keyboards, mice, headphones, and gaming gear. Find the perfect setup that matches your needs and style.</p>
+                </div>
+            </div>
+
+            <div class="feature-card service-card">
+                <div class="service-image">
+                    <img src="repair.png" alt="Laptop & Desktop Repair" loading="lazy">
+                </div>
+                <div class="service-content">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Laptop & Desktop Repair</h3>
+                    <p>Professional repair services for hardware issues, software problems, and maintenance. Quick turnaround with expert technicians.</p>
+                </div>
+            </div>
+
+            <div class="feature-card service-card">
+                <div class="service-image">
+                    <img src="cctv.png" alt="CCTV Installation" loading="lazy">
+                </div>
+                <div class="service-content">
+                    <div class="feature-icon">📹</div>
+                    <h3>CCTV Installation</h3>
+                    <p>Complete surveillance solutions for homes and businesses. Professional installation, setup, and maintenance services.</p>
+                </div>
+            </div>
+
+            <div class="feature-card service-card">
+                <div class="service-image">
+                    <img src="Consultation.png" alt="Expert Consultation" loading="lazy">
+                </div>
+                <div class="service-content">
+                    <div class="feature-icon">💡</div>
+                    <h3>Expert Consultation</h3>
+                    <p>Get personalized advice on choosing the right electronics. Our experts help you make informed decisions within your budget.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        // ─── Mobile menu toggle ───────────────────────────────────────────────
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks   = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

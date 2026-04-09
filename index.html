@@ -4,433 +4,413 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eyecom NX Digital Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'DM Sans', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 90%;
-            background-color: #fdfcfc;
-            background-image: url('https://via.placeholder.com/1500x900');
-            background-size: cover;
-            background-blend-mode: overlay;
-            color: #070707;
-            
+            min-height: 100vh;
+            background: #eef3f8;
         }
 
         .card {
-            width: 350px;
-            background: rgb(252, 251, 251);
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            width: 360px;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 8px 40px rgba(14, 62, 120, 0.10), 0 2px 8px rgba(14,62,120,0.06);
             overflow: hidden;
         }
 
+        /* ── HEADER ── */
         .card-header {
+            background: linear-gradient(140deg, #e8f2ff 0%, #f5f9ff 60%, #ddeeff 100%);
+            padding: 28px 20px 18px;
             text-align: center;
-            padding: 20px;
-            background: linear-gradient(135deg, #c9c7ff, #cfe5ff);
-                                 color: rgb(10, 10, 10);
-            border-bottom: 1px solid #444;
+            border-bottom: 1px solid #d6e6f7;
+            position: relative;
         }
-
-        .card-header h1 {
-            margin: 0;
-            font-size: 28px;
-            letter-spacing: 1px;
-        }
-
-        .card-header p {
-            margin: 5px 0 0;
-            font-size: 14px;
-            font-style: italic;
-        }
-
-        .card-section {
-            padding: 10px;
-        }
-        .card-section h3{
-            margin:auto;
-            text-align: center;
-            padding: 5px;
-        }
-
-        .card-section h2 {
-            font-size: 18px;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #080808;
-            padding-bottom: 5px;
-        }
-
-        .btn-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .btn {
-            width: 100px;
-            height: 80px;
-            border-radius: 10%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #c9c7ff, #cfe5ff);               color: #080808;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s ease, background 0.3s ease;
-        }
-
-        .btn i {
-            font-size: 24px;
-        }
-
-        .btn:hover {
-            background: linear-gradient(135deg, #9c98ff, #cfe5ff);  
-                      color: rgb(12, 12, 12);
-            transform: scale(1.1);
-         
-        }
-        button{
-            width: 100px;
-            height: 80px;
-            border-radius: 10%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #c9c7ff, #cfe5ff);      color: #080808;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: medium;
-            transition: transform 0.3s ease, background 0.3s ease;
-        
-        }
-        .button:hover{
-            background: linear-gradient(135deg, #9c98ff, #cfe5ff);  
-            color: rgb(7, 7, 7);
-            transform: scale(1.1);
-         
-        }       
-        .button {
-    border: none;            /* Remove any border */
-    outline: none;           /* Remove outline */
-    box-shadow: none;        /* Remove shadow */
-}
-
-/* .button:focus, */
-.button:active {
-    border: none;            /* Ensure no border on focus/active */
-    outline: none;           /* Ensure no outline on focus/active */
-    box-shadow: none;        /* Ensure no shadow on focus/active */
-    background: inherit;     /* Keep the same background */
-}
- 
-
-
-
-        .footer {
-            text-align: center;
-            padding: 10px;
-            font-size: 12px;
-            background: #fcfafa;
-            border-top: 1px solid #444;
-            color: #000000;
-            font-weight: bold;
-        }
-      /* Share Dialog Styling */
-#share-dialog {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
-    z-index: 1000;
-}
-
-#share-dialog.show {
-    opacity: 1;
-    visibility: visible;
+        .card-header .logo-wrap {
+    width: 280px;        /* wider for horizontal logo */
+    height: 80px;        /* shorter height */
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 0 auto 12px;
     display: flex;
-    flex-direction: column;
-    background: linear-gradient(135deg, #0b0196, #0077ff);
-    align-items: center;
-}
-
-.close-dialog {
-    background: none;
-    border: none;
-    font-size: 20px;
-
-    color: #f8f2f2;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-
-.share-option {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #fcfafa;
-width: 300px;
-    cursor: pointer;
-    margin-bottom: 10px;
-}
-
-
-.share-option p {
-    margin-left: 10px;
-}
-.share-link p{
-    text-align: center;
-}
-.button3{
-    width: 100px;
-    height: 80px;
-    border-radius: 10%;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #c9c7ff, #cfe5ff);
-    color: #080808;
-    text-decoration: none;
-    font-weight: bold;
-    transition: transform 0.3s ease, background 0.3s ease;
+    padding: 6px 10px;   /* spacing so logo breathes */
 }
-.button3:hover{
-    background: linear-gradient(135deg, #9c98ff, #cfe5ff);  
-            color: rgb(7, 7, 7);
-            transform: scale(1.1);
+        .card-header .logo-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;   /* IMPORTANT: no cropping */
 }
-/* Modal and About Us section */
-.modal {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-    width: 80%;
-    max-width: 400px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    overflow-y: auto;
-    max-height: 80%;
-    height: 500px;
-}
+        .card-header .tagline {
+            font-size: 12px;
+            color: #6b8fb5;
+            letter-spacing: 0.06em;
+            font-weight: 400;
+        }
 
-.modal-content {
-    position: relative;
-}
+        /* ── CONTACT NAME ── */
+        .contact-name {
+            padding: 14px 20px 4px;
+            font-size: 13px;
+            color: #8aa4bf;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
 
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #080808;
-    font-weight: bold;
-}
+        /* ── SECTIONS ── */
+        .card-section {
+            padding: 6px 20px 14px;
+        }
+        .section-label {
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #aac0d8;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
 
-.modal-content h2 {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
+        /* ── BUTTON GRID ── */
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        .btn-grid.two { grid-template-columns: repeat(2, 1fr); }
+        .btn-grid.four { grid-template-columns: repeat(4, 1fr); }
 
-.modal-content p {
-    text-align: justify;
-    font-size: 16px;
-}
-.about-us-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 0%;
-    display: flex;
-    margin: 0 auto 20px auto;
-    display: block;
-    object-fit: cover;
-}
-.imagepara p{
-text-align: center;}
+        .btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 12px 6px;
+            border-radius: 14px;
+            background: #f0f6ff;
+            border: 1px solid #dceaf7;
+            color: #1a4a80;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.18s, transform 0.15s, box-shadow 0.18s;
+            font-family: 'DM Sans', sans-serif;
+            letter-spacing: 0.01em;
+        }
+        .btn:hover, .btn:active {
+            background: #deeeff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(14,82,180,0.10);
+        }
+        .btn .icon { font-size: 20px; line-height: 1; }
 
+        /* ── DIVIDER ── */
+        .divider {
+            height: 1px;
+            background: #e8f0f8;
+            margin: 2px 20px;
+        }
 
+        /* ── FOOTER ── */
+        .footer {
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 13px;
+            color: #aac0d8;
+            background: #f8fbff;
+            border-top: 1px solid #e4eef8;
+            letter-spacing: 0.02em;
+        }
+
+        /* ── OVERLAY / MODAL base ── */
+        .overlay {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(10, 30, 60, 0.35);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+        .overlay.show { display: flex; }
+
+        /* ── ABOUT MODAL ── */
+        .modal-box {
+            background: #fff;
+            border-radius: 20px;
+            width: 320px;
+            max-height: 82vh;
+            overflow-y: auto;
+            padding: 24px 20px 20px;
+            box-shadow: 0 12px 48px rgba(14,62,120,0.18);
+            position: relative;
+        }
+        .modal-box h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 20px;
+            color: #1a3a6a;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .modal-box p {
+            font-size: 13px;
+            color: #4a6a8a;
+            line-height: 1.6;
+            text-align: justify;
+            margin-bottom: 14px;
+        }
+        .modal-img-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 6px;
+        }
+        .modal-img-item { text-align: center; }
+        .modal-img-item img {
+            width: 100%; aspect-ratio: 1;
+            border-radius: 12px;
+            object-fit: cover;
+            display: block;
+        }
+        .modal-img-item p {
+            font-size: 13px;
+            color: #6b8fb5;
+            margin-top: 4px;
+            text-align: center;
+        }
+        .close-btn {
+            position: absolute; top: 14px; right: 16px;
+            background: #f0f6ff; border: none; border-radius: 8px;
+            width: 28px; height: 28px;
+            font-size: 16px; cursor: pointer; color: #4a6a8a;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        /* ── SHARE PANEL ── */
+        .share-box {
+            background: #fff;
+            border-radius: 20px;
+            width: 300px;
+            padding: 22px 20px 18px;
+            box-shadow: 0 12px 48px rgba(14,62,120,0.18);
+            position: relative;
+        }
+        .share-box h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a3a6a;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+        .share-opt {
+            display: flex; align-items: center; gap: 12px;
+            padding: 11px 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.15s;
+            font-size: 13px;
+            color: #2a4a7a;
+            font-weight: 500;
+        }
+        .share-opt:hover { background: #f0f6ff; }
+        .share-opt .s-icon { font-size: 20px; }
+        .copy-row {
+            margin-top: 10px;
+            background: #f0f6ff;
+            border-radius: 10px;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .copy-row .url-text {
+            font-size: 11px;
+            color: #4a7ab5;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .copy-row .copy-label {
+            font-size: 11px;
+            color: #1a6ad4;
+            font-weight: 600;
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <div class="card-header">
-            <h1>Eyecom NX</h1>
+<div class="card">
+
+    <!-- HEADER -->
+    <div class="card-header">
+        <div class="logo-wrap">
+            <img src="logo.svg" alt="Eyecom NX Logo">
         </div>
-        
-        <div class="card-section">
-                <h3>Your Trusted Electronics Partner</h3>
+        <div class="tagline">Your Trusted Electronics Partner</div>
+    </div>
 
-            <h2>Contact:Jayanti Nandu </h2>
-            <div class="btn-container">
-                <a href="tel:+919892994160" class="btn"><i>📞</i>Call</a>
-                <a href="https://wa.me/+919892994160" class="btn"><i>💬</i>Whatsapp</a>
-                <a href="mailto:eyecomnxofficial@gmail.com" class="btn"><i>✉️</i>Email</a>
-                <a href="https://www.justdial.com/Mumbai/Eyecom-Near-Sona-Udyog-Andheri-East/022PXX22-XX22-150720184328-P3M7_BZDET/reviews" class="btn"><i>⭐</i>Review</a>
-                <button class="button" id="share-button"><i>🔗</i> Share</button>
-            </div>
-        </div>
-        <div class="share-dialog" id="share-dialog">
-            <button class="close-dialog" id="close-dialog">&times;</button>
-            <h3>Share</h3>
-            <div class="share-options">
-                <div class="share-option" onclick="shareOnEmail()"><i>✉️</i> <p>Email</p></div>
-                <div class="share-option" onclick="shareOnWhatsApp()"><i>💬</i> <p>WhatsApp</p></div>
-                <div class="share-option" onclick="shareOnFacebook()"><i>📘</i> <p>Facebook</p></div>
-
-            </div>
-            <div class="share-link" onclick="copyToClipboard()">
-                <p>Click to copy link</p>
-                <p id="link-text">https://g.co/kgs/QtuFPgW</p>
-            </div>
-        </div>
-
-        <script>
-            const shareButton = document.getElementById('share-button');
-            const shareDialog = document.getElementById('share-dialog');
-            const closeDialog = document.getElementById('close-dialog');
-        
-            // Open the dialog
-            shareButton.addEventListener('click', () => {
-                shareDialog.classList.add('show');
-            });
-        
-            // Close the dialog
-            closeDialog.addEventListener('click', () => {
-                shareDialog.classList.remove('show');
-            });
-        
-            // Close dialog when clicking outside of it
-            window.addEventListener('click', (event) => {
-                if (event.target === shareDialog) {
-                    shareDialog.classList.remove('show');
-                }
-            });
-        
-            // Sharing functions
-            function shareOnFacebook() {
-                const link = document.getElementById('link-text').textContent;
-                const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(link)}`;
-                window.open(facebookUrl, '_blank');
-            }
-        
-            function shareOnWhatsApp() {
-                const link = document.getElementById('link-text').textContent;
-                const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(link)}`;
-                window.open(whatsappUrl, '_blank');
-            }
-        
-            function shareOnEmail() {
-                const link = document.getElementById('link-text').textContent;
-                const emailUrl = `mailto:?subject=Check this out&body=${encodeURIComponent(link)}`;
-                window.open(emailUrl, '_blank');
-            }
-        
-            function copyToClipboard() {
-                const link = document.getElementById('link-text').textContent;
-                navigator.clipboard.writeText(link)
-                    .then(() => {
-                        alert('Link copied to clipboard!');
-                    })
-                    .catch(err => {
-                        console.error('Failed to copy: ', err);
-                    });
-            }
-     
-
-        </script>
-        
-
-
-        <div class="card-section">
-            <h2>Profile:</h2>
-            <div class="btn-container">
-                <a href="#" class="button3" onclick="openModal()"><i>ℹ️</i> About Us</a>
-            </div>
-        </div>
-        
-        <!-- Modal Structure -->
-        <div id="aboutModal" class="modal">
-            <div class="modal-content">
-                <span class="close-button" onclick="closeModal()">×</span>
-                <h2>About Us</h2>
-                <p>We are a team of passionate developers who work towards building great user experiences. Our goal is to make the web a better place for everyone.</p>
-            </div>
-            <div class="imagepara">
-            <img src="https://i.pinimg.com/236x/a2/08/d4/a208d457bc7171d2026ff4606472f555.jpg" alt="About Us Image" class="about-us-image">
-            <p>Router</p>
-            <img src="https://i.pinimg.com/236x/43/15/ae/4315ae69df9daa2550203db798b0d77f.jpg" alt="About Us Image" class="about-us-image">
-                <p>Headphone</p>
-            <img src="https://i.pinimg.com/236x/ac/23/7f/ac237f901f52afd369df2ce53a7ed64e.jpg" alt="About Us Image" class="about-us-image">
-                <p>Speaker</p>
-                <img src="https://i.pinimg.com/736x/55/9f/ed/559fedfa616fe66061a7e6e6e4c8f21a.jpg" alt="About Us Image" class="about-us-image">
-                <p>Desktop Setup</p>
-        </div>
-        </div>
-        
-<script>// Function to open the modal
-    function openModal() {
-        document.getElementById("aboutModal").style.display = "block";
-    }
-    
-    // Function to close the modal
-    function closeModal() {
-        document.getElementById("aboutModal").style.display = "none";
-    }
-    
-    // Close modal when clicked outside of it
-    window.onclick = function(event) {
-        var modal = document.getElementById("aboutModal");
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-    </script>
-        <div class="card-section">
-            <h2>Company:</h2>
-            <div class="btn-container">
-                <a href="https://www.justdial.com/Mumbai/Eyecom-Near-Sona-Udyog-Andheri-East/022PXX22-XX22-150720184328-P3M7_BZDET?ncatid=&mncatname=&bd=" class="btn"><i>🏢</i>Company</a>
-                <a href="https://www.justdial.com/Mumbai/Eyecom-Near-Sona-Udyog-Andheri-East/022PXX22-XX22-150720184328-P3M7_BZDET/gallery?tab=all&template=1&ncatid=&mncatname=&vrsn=3.0&bd=&pselect=107615084&sname=&scat=" class="btn"><i>🖼️</i>Gallery</a>
-                <a href="https://www.google.com/maps/place/Eyecom/@19.125497,72.852232,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7c82b2dd158c7:0x479996fec848c21!8m2!3d19.125497!4d72.852232!16s%2Fg%2F1tfslg1b?authuser=0&hl=en&entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D" class="btn"><i>📍</i>Location</a>
-            </div>
-        </div>
-
-        <div class="card-section">
-            <h2>Follow Us:</h2>
-            <div class="btn-container">
-                <a href="https://www.instagram.com/eyecom_nx_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="btn"><i>📸</i>Instagram</a>
-                <a href="https://www.facebook.com/profile.php?id=61569805431107&mibextid=rS40aB7S9Ucbxw6v" class="btn"><i>📚</i>Facebook</a>
-
-            </div>
-        </div>
-
-        <div class="footer">
-            &copy; 2025 Eyecom NX. All rights reserved.
+    <div class="card-section">
+        <div class="section-label">Reach out</div>
+        <div class="btn-grid four">
+            <a href="tel:+919892994160" class="btn" target="_blank"><span class="icon"><img src="phone.png" alt="Call" width="20" height="20"></span>Call</a>
+            <a href="https://wa.me/+919892994160" class="btn" target="_blank"><span class="icon"><img src="whatsapp.png" alt="WhatsApp" width="20" height="20"></span>WhatsApp</a>
+            <a href="mailto:eyecomnxofficial@gmail.com" class="btn" target="_blank"><span class="icon"><img src="email.png" alt="Email" width="20" height="20"></span>Email</a>
+            <a href="https://www.google.com/search?sca_esv=ef6db0e9fcb54fe8&rlz=1C1GCEA_enIN1206IN1206&biw=1920&bih=911&sxsrf=ANbL-n7V40hBqQWdiDe-k5wXI_G94UhLgA:1775487541897&si=AL3DRZHrmvnFAVQPOO2Bzhf8AX9KZZ6raUI_dT7DG_z0kV2_x4y3MsBZtAtRfDwCye7btEvg8OKfm9mX_8HF5DIIfi6-LNw5efHtBIotyjav0MInj6ka-ylIDlwmOPg7QfPc_NCCryht&q=EYECOM+NX+Reviews&sa=X&ved=2ahUKEwjHpfPBvtmTAxX6r1YBHdIsOX8Q0bkNegQIOhAF&sei=P8rTaf-7GZCL4-EP1PX3YA" class="btn" target="_blank" id="review-btn"><span class="icon">⭐</span>Review</a>
         </div>
     </div>
 
+    <div class="divider"></div>
+
+    <!-- PROFILE -->
+    <div class="card-section">
+        <div class="section-label">Profile</div>
+        <div class="btn-grid two">
+            <a href="#" class="btn" target="_blank" onclick="openAbout(); return false;" style="flex-direction:row; gap:10px; padding:13px 16px; justify-content:center;">
+                <span class="icon">ℹ️</span> <span style="font-size:14px">About Us</span>
+            </a>
+            <a href="services.html" class="btn" 
+   style="flex-direction:row; gap:10px; padding:13px 16px; justify-content:center;">
+    <span class="icon"><img src="service.png" alt="WhatsApp" width="20" height="20"></span>
+    <span style="font-size:14px">Services</span>
+</a>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- COMPANY -->
+    <div class="card-section">
+        <div class="section-label">Company</div>
+        <div class="btn-grid">
+            <a href="https://share.google/KF7JZ3oNa4Adca69B" class="btn" target="_blank"><span class="icon">🏢</span>Company</a>
+            <a href="https://maps.app.goo.gl/QxKnsnWVCc2Jv7466" class="btn" target="_blank"><span class="icon">🖼️</span>Gallery</a>
+            <a href="https://www.google.com/maps?rlz=1C1GCEA_enIN1206IN1206&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYOzIGCAMQRRhBMgYIBBBFGEEyBggFEEUYQdIBCDE1OTNqMGo0qAIAsAIB&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KcdY0S0ryOc7MSGMhOxvmXkE&daddr=Shop.No+12,+Royal+Enclave,+Parsi+Panchayat+Rd,+near+Sona+Udyog+Industrial+Estate,+Amba+Wadi,+Natwar+Nagar,+Andheri+East,+Mumbai,+Maharashtra+400069" class="btn" target="_blank"><span class="icon">📍</span>Location</a>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- FOLLOW -->
+    <div class="card-section">
+        <div class="section-label">Follow Us</div>
+        <div class="btn-grid two">
+  <!-- Instagram Button -->
+  <a href="https://www.instagram.com/eyecom_nx_" class="btn" target="_blank">
+    <span class="icon">
+      <img src="instagram.png" alt="Instagram" width="20" height="20">
+    </span>
+  </a>
+
+  <!-- Facebook Button -->
+  <a href="#" class="btn" target="_blank">
+    <span class="icon">
+      <img src="facebook.png" alt="Facebook" width="20" height="20">
+    </span>
+  </a>
+</div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SHARE -->
+    <div class="card-section" style="padding-bottom:16px;">
+        <div class="btn-grid" style="grid-template-columns:repeat(1,1fr);">
+            <button class="btn" target="_blank" id="share-btn" style="flex-direction:row; gap:10px; padding:13px 16px; justify-content:center; border:none;">
+                <span class="icon">🔗</span> <span style="font-size:12px">Share this Card</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">&copy; 2025 Eyecom NX. All rights reserved.</div>
+</div>
+
+<!-- ABOUT OVERLAY -->
+<div class="overlay" id="about-overlay">
+    <div class="modal-box">
+        <button class="close-btn" onclick="closeAbout()">✕</button>
+        <h2>About Us</h2>
+        <p>EYECOM NX is your trusted IT Hardware & Networking showroom in Andheri East, Mumbai. With over 14 years of expertise, we specialize in high-performance Gaming PC builds, Business Laptops, PC and Laptop Repair service and CCTV Camera installation. As a Logitech Authorised Partner, we offer genuine products from top brands like TP-Link, Dell, HP, Seagate, and Hikvision. Whether you need a custom PC, expert Laptop Repair, or high-speed SSD upgrades, our team provides reliable service and authentic hardware. Visit us near Parsi Panchayat for all your IT, networking, and security needs.</p>
+    </div>
+</div>
+
+<!-- SHARE OVERLAY -->
+<div class="overlay" id="share-overlay">
+    <div class="share-box">
+        <button class="close-btn" onclick="closeShare()">✕</button>
+        <h3>Share Card</h3>
+        <div class="share-opt" onclick="shareWhatsApp()"><span class="s-icon">💬</span> WhatsApp</div>
+        <div class="share-opt" onclick="shareEmail()"><span class="s-icon">✉️</span> Email</div>
+        <div class="share-opt" onclick="nativeShare()"><span class="s-icon">🔗</span> More options…</div>
+        <div class="copy-row" onclick="copyLink()">
+            <span class="url-text" id="display-url">eyecomnx.com</span>
+            <span class="copy-label" id="copy-label">Copy link</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    const SHARE_URL = window.location.href;
+    const SHARE_TITLE = "Eyecom NX – Your Trusted Electronics Partner";
+
+    // About modal
+    function openAbout() { document.getElementById('about-overlay').classList.add('show'); }
+    function closeAbout() { document.getElementById('about-overlay').classList.remove('show'); }
+
+    // Share modal
+    document.getElementById('share-btn').addEventListener('click', openShare);
+    function openShare() { document.getElementById('share-overlay').classList.add('show'); }
+    function closeShare() { document.getElementById('share-overlay').classList.remove('show'); }
+
+    // Close on backdrop click
+    document.querySelectorAll('.overlay').forEach(o => {
+        o.addEventListener('click', e => { if (e.target === o) o.classList.remove('show'); });
+    });
+
+    // Native share (uses device share sheet)
+    function nativeShare() {
+        if (navigator.share) {
+            navigator.share({ title: SHARE_TITLE, url: SHARE_URL })
+                .catch(() => {});
+        } else {
+            copyLink();
+        }
+    }
+
+    function shareWhatsApp() {
+        window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(SHARE_TITLE + ' ' + SHARE_URL), '_blank');
+    }
+    function shareEmail() {
+        window.open('mailto:?subject=' + encodeURIComponent(SHARE_TITLE) + '&body=' + encodeURIComponent(SHARE_URL), '_blank');
+    }
+    function copyLink() {
+        navigator.clipboard.writeText(SHARE_URL).then(() => {
+            const lbl = document.getElementById('copy-label');
+            lbl.textContent = 'Copied!';
+            lbl.style.color = '#27ae60';
+            setTimeout(() => { lbl.textContent = 'Copy link'; lbl.style.color = ''; }, 2000);
+        }).catch(() => {
+            alert('Copy: ' + SHARE_URL);
+        });
+    }
+
+    // Show actual current URL in share box
+    document.getElementById('display-url').textContent = SHARE_URL.replace(/^https?:\/\//, '').slice(0,38);
+</script>
+
 </body>
 </html>
-
